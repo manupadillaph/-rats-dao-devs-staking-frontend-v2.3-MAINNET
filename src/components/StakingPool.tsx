@@ -486,6 +486,7 @@ export default function StakingPool ({ stakingPoolInfo }: { stakingPoolInfo: Sta
 								setIsWorking={handleSetIsWorking} 
 								actionName="Split Wallet UTxOs" actionIdx={poolInfo.name} messageFromParent={actionMessage} hashFromParent={actionHash} isWorking={isWorking} 
 								description={'<p className="info" style="text-align: center;">It is recommended to Split your Wallet\'s UTxOs (Unspent Transaction Outputs) into smaller amounts. This will make it easier to use them as collateral for Smart Contracts and will provide more flexibility in managing your funds.</p>'}
+								poolInfo={poolInfo} 
 								swEnabledBtnOpenModal={walletStore.connected && isPoolDataLoaded} 
 								swEnabledBtnAction={walletStore.connected && isPoolDataLoaded}
 								swShow={true }

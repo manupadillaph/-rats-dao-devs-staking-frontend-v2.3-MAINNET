@@ -141,8 +141,8 @@ export async function fixTx(tx_Building: any, lucid: Lucid, protocolParameters: 
 
     const transaction_NOT_READY_ONLY_FOR_SHOWING = tx_Building.txBuilder.build_tx();
 
-    // console.log("fixTx - Tx Complete before evaluate:");
-    // console.log(transaction_NOT_READY_ONLY_FOR_SHOWING.to_json());
+    //console.log("fixTx - Tx Complete before evaluate:");
+    //console.log(transaction_NOT_READY_ONLY_FOR_SHOWING.to_json());
 
     const feeActual = tx_Building.txBuilder.get_fee_if_set()
 
