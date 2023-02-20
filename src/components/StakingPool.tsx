@@ -488,7 +488,7 @@ export default function StakingPool ({ stakingPoolInfo }: { stakingPoolInfo: Sta
 								description={'<li className="info">It is recommended to Split your Wallet\'s UTxOs (Unspent Transaction Outputs) into smaller amounts.</li>\
 								<li className="info">This will make it easier to use them as Collateral for Smart Contracts and will provide more flexibility in managing your funds.</li>\
 								<li className="info">Additionally, this action will transfer your User Deposit Tokens to a separate UTxO, making them easily accessible in the future.</li>\
-								<li className="info">You will need at least between 6 and 10 ADA for doing this Transaction.</li>'}
+								<li className="info">You will need at least between 6 and 10 ADA but all of them will remain in your wallet in the new UTxOs created.</li>'}
 								poolInfo={poolInfo} 
 								swEnabledBtnOpenModal={walletStore.connected && isPoolDataLoaded} 
 								swEnabledBtnAction={walletStore.connected && isPoolDataLoaded}
