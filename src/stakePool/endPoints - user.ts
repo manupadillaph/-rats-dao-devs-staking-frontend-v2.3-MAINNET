@@ -9,7 +9,7 @@ import {
     fundID_TN, maxDiffTokensForUserDatum, maxTxFundDatumInputs, poolID_TN, tokenNameLenght, txID_User_Deposit_For_User_TN, txID_User_Harvest_TN, txID_User_Withdraw_TN, userID_TN
 } from "../types/constantes";
 import { StakingPoolDBInterface } from '../types/stakePoolDBModel';
-import { addAssets, addAssetsList, calculateMinAda, calculateMinAdaOfAssets, createValue_Adding_Tokens_Of_AC_Lucid, subsAssets } from '../utils/cardano-helpers';
+import { addAssets, addAssetsList, calculateMinAda, calculateMinAdaOfAssets, createValue_Adding_Tokens_Of_AC_Lucid, findSmallerUTxO, subsAssets } from '../utils/cardano-helpers';
 import { makeTx_And_UpdateEUTxOsIsPreparing } from '../utils/cardano-helpersTx';
 import { pubKeyHashToAddress } from "../utils/cardano-utils";
 import { formatAmount, strToHex, toJson } from '../utils/utils';
@@ -531,7 +531,8 @@ export async function userWithdraw(wallet: Wallet, poolInfo: StakingPoolDBInterf
         }
         console.log(functionName + " - UTxOs with FundDatum that are not being consumed - length: " + eUTxOs_With_FundDatum.length);
         //------------------
-        const eUTxO_With_FundDatum = eUTxOs_With_FundDatum[0];
+        const eUTxO_With_FundDatum = findSmallerUTxO (eUTxOs_With_FundDatum);
+        console.log(functionName + " - UTxOs with Minimum FundDatum: " + toJson(eUTxO_With_FundDatum));
         //------------------
         const fundDatum_In: FundDatum = eUTxO_With_FundDatum.datum as FundDatum;
         console.log(functionName + " - FundDatum In: " + toJson(fundDatum_In));
