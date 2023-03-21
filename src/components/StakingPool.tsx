@@ -397,23 +397,21 @@ export default function StakingPool ({ stakingPoolInfo }: { stakingPoolInfo: Sta
 											postActionError={updateDetailsStakingPoolAndWallet}
 											setIsWorking={handleSetIsWorking} 
 											actionName="Deposit" actionIdx={poolInfo.name} messageFromParent={actionMessage} hashFromParent={actionHash} isWorking={isWorking} 
-											description={poolInfo.swClosed ? 
-												'<p className="info">This Pool in already closed. You can\'t Deposit anymore.</p>' 
-												: 
-
-												
-
-												staking_AC_isAda? 
-													'<li className="info">You are about to Deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
-													<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
-													<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>' 
-												: 
-													'<li className="info">You are about to deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
-													<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
-													<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
-													<li className="info">Please note that, in addition to the Transactions Fees, a minimum of ADA is required to be sent along with your <b>' + poolInfo.staking_UI + '</b>.</li>\
-													<li className="info">You will receive the ADA back when you withdraw your deposit.</li>'
-												}
+											description={'<p className="info">This Pool is not accepting new Deposits. You can Deposit in the new ones <a href = "https://staking.ratsdao.io/">here</a>.</p>' }
+											// description={poolInfo.swClosed ? 
+											// 	'<p className="info">This Pool is already closed. You can\'t Deposit anymore.</p>' 
+											// 	: 
+											// 	staking_AC_isAda? 
+											// 		'<li className="info">You are about to Deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
+											// 		<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
+											// 		<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>' 
+											// 	: 
+											// 		'<li className="info">You are about to deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
+											// 		<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
+											// 		<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
+											// 		<li className="info">Please note that, in addition to the Transactions Fees, a minimum of ADA is required to be sent along with your <b>' + poolInfo.staking_UI + '</b>.</li>\
+											// 		<li className="info">You will receive the ADA back when you withdraw your deposit.</li>'
+											// 	}
 											poolInfo={poolInfo} 
 											swEnabledBtnOpenModal={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded} 
 											swEnabledBtnAction={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded && !poolInfo.swClosed} 
@@ -432,23 +430,24 @@ export default function StakingPool ({ stakingPoolInfo }: { stakingPoolInfo: Sta
 											postActionError={updateDetailsStakingPoolAndWallet}
 											setIsWorking={handleSetIsWorking} 
 											actionName="Deposit" actionIdx={poolInfo.name} messageFromParent={actionMessage} hashFromParent={actionHash} isWorking={isWorking} 
-											description={poolInfo.swClosed ? 
-												'<p className="info">This Pool in already closed. You can\'t Deposit anymore.</p>' 
-												: 
-													staking_AC_isAda? 
-														'<li className="info">You are about to Deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
-														<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
-														<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>' 
-													: 
-														'<li className="info">You are about to deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
-														<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
-														<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
-														<li className="info">Please note that, in addition to the Transactions Fees, a minimum of ADA is required to be sent along with your <b>' + poolInfo.staking_UI + '</b>.</li>\
-														<li className="info">You will receive the ADA back when you withdraw your deposit.</li>'
-												}
+											description={'<p className="info">This Pool is not accepting new Deposits. You can Deposit in the new ones <a href = "https://staking.ratsdao.io/">here</a>.</p>' }
+											// {poolInfo.swClosed ? 
+											// 	'<p className="info">This Pool is already closed. You can\'t Deposit anymore.</p>' 
+											// 	: 
+											// 		staking_AC_isAda? 
+											// 			'<li className="info">You are about to Deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
+											// 			<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
+											// 			<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>' 
+											// 		: 
+											// 			'<li className="info">You are about to deposit <b>' + poolInfo.staking_UI + '</b> to this Pool.</li>\
+											// 			<li className="info">In return, you will receive User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
+											// 			<li className="info">You can withdraw your <b>' + poolInfo.staking_UI + '</b> at any time in exchange for the User Token (<b>' + txID_User_Deposit_For_User_TN + '</b>).</li>\
+											// 			<li className="info">Please note that, in addition to the Transactions Fees, a minimum of ADA is required to be sent along with your <b>' + poolInfo.staking_UI + '</b>.</li>\
+											// 			<li className="info">You will receive the ADA back when you withdraw your deposit.</li>'
+											// 	}
 											poolInfo={poolInfo} 
 											swEnabledBtnOpenModal={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded} 
-											swEnabledBtnAction={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded && !poolInfo.swClosed} 
+											swEnabledBtnAction={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded && !poolInfo.swClosed && false} 
 											swShow={poolInfo.swFunded} 
 											swShowInput={true} inputUnitForLucid={poolInfo.staking_Lucid} inputUnitForShowing={poolInfo.staking_UI} inputMax={maxStakingAmountUI} inputDecimals={poolInfo.staking_Decimals}  
 											swHash={true} 
@@ -465,11 +464,11 @@ export default function StakingPool ({ stakingPoolInfo }: { stakingPoolInfo: Sta
 									setIsWorking={handleSetIsWorking} 
 									cancel={handleCancel}
 									actionName="Deposit Batch" actionIdx={poolInfo.name} messageFromParent={actionMessage} hashFromParent={actionHash} isWorking={isWorking} 
-									description={poolInfo.swClosed ? '<p className="info">This Pool in already closed. You can\'t Deposit anymore.</p>' : '<p className="info">Create multiple Transactions for new Deposits in one go, rather than manually entering each Transaction individually. However, you will still need to individually sign each Transaction.</p>'}
+									description={poolInfo.swClosed ? '<p className="info">This Pool is already closed. You can\'t Deposit anymore.</p>' : '<p className="info">Create multiple Transactions for new Deposits in one go, rather than manually entering each Transaction individually. However, you will still need to individually sign each Transaction.</p>'}
 									poolInfo={poolInfo} 
 									swShowInput={true} inputUnitForLucid={poolInfo.staking_Lucid} inputUnitForShowing={poolInfo.staking_UI} inputMax={maxStakingAmountUI} inputDecimals={poolInfo.staking_Decimals} 
 									swEnabledBtnOpenModal={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded } 
-									swEnabledBtnAction={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded && !poolInfo.swClosed} 
+									swEnabledBtnAction={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded && !poolInfo.swClosed && false} 
 									swShow={poolInfo.swFunded} 
 									swHash={false} 
 								/>
@@ -549,7 +548,7 @@ export default function StakingPool ({ stakingPoolInfo }: { stakingPoolInfo: Sta
 													postActionError={updateDetailsStakingPoolAndWallet}
 													setIsWorking={handleSetIsWorking} 
 													actionName="Harvest" actionIdx={poolInfo.name + "-" + userStakedData.eUTxO_With_UserDatum!.uTxO.txHash + "-" + userStakedData.eUTxO_With_UserDatum!.uTxO.outputIndex} messageFromParent={actionMessage} hashFromParent={actionHash} isWorking={isWorking} 
-													description={poolInfo.swTerminated ? '<p className="info">This Pool in already terminated. You can\'t Harvest anymore.</p>' : undefined}
+													description={poolInfo.swTerminated ? '<p className="info">This Pool is already terminated. You can\'t Harvest anymore.</p>' : undefined}
 													poolInfo={poolInfo} 
 													swEnabledBtnOpenModal={walletStore.connected && isPoolDataLoaded && swUserRegistered && !userStakedData.isLoading} 
 													swEnabledBtnAction={walletStore.connected && isPoolDataLoaded && swUserRegistered && !userStakedData.isLoading && !poolInfo.swTerminated} 
