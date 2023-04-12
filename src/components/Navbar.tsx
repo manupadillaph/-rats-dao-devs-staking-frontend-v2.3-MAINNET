@@ -7,11 +7,10 @@ export default function Navbar({swCreate}: {swCreate ?: boolean}) {
 		<div className="header">
 			<div className="navbar-section navbar-start">
 				<ul>
-					<li><a href="https://staking.ratsdao.io/">Home</a></li>
-					<li><a href="https://staking.ratsdao.io/withdraw">My Deposits</a></li>
+					<li><a href="https://staking.ratsdao.io/">New Staking Portal</a></li>
 					<li><a href="/withdraw">Legacy Stake</a></li>
-					<li><a href="/admin">Admin</a></li>
-					<li><a href="/create">Create</a></li>
+					<li><a href="/admin">Admin Legacy Stake</a></li>
+					{/* <li><a href="/create">Create</a></li> */}
 					{swCreate === true?
 						<li><a href="/settings">Settings</a></li>
 						:
@@ -23,7 +22,7 @@ export default function Navbar({swCreate}: {swCreate ?: boolean}) {
 			</div>
 			<div className="navbar-section navbar-middle">
 				<h1><a className="main" href="/">
-					RatsDAO Staking
+					RatsDAO Legacy Staking
 				</a></h1>
 			</div>
 			<div className="navbar-section navbar-end">
