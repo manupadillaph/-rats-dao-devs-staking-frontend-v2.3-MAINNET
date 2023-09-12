@@ -414,7 +414,7 @@ export default function StakingPool ({ stakingPoolInfo }: { stakingPoolInfo: Sta
 											// 	}
 											poolInfo={poolInfo} 
 											swEnabledBtnOpenModal={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded} 
-											swEnabledBtnAction={walletStore.connected && isPoolDataLoaded && isWalletDataLoaded && !poolInfo.swClosed} 
+											swEnabledBtnAction={false && walletStore.connected && isPoolDataLoaded && isWalletDataLoaded && !poolInfo.swClosed} 
 											swShow={poolInfo.swFunded} 
 											swHash={true} 
 											inputUnitForLucid={poolInfo.staking_Lucid} inputUnitForShowing={poolInfo.staking_UI} inputMax={maxStakingAmountUI} inputDecimals={poolInfo.staking_Decimals} 
