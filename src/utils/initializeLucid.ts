@@ -3,24 +3,50 @@ import { Blockfrost, Lucid, WalletApi } from 'lucid-cardano';
 import { toJson } from './utils';
 //--------------------------------------
 
+// export const initializeLucid = async (walletApi?: WalletApi | undefined) => {
+//     // console.log ("initializeLucid - init")
+//     try {
+//         const lucid = await Lucid.new(
+//             // new Blockfrost(process.env.NEXT_PUBLIC_BLOCKFROST_URL!, process.env.NEXT_PUBLIC_BLOCKFROST_KEY!),
+//             new Blockfrost(process.env.NEXT_PUBLIC_REACT_SERVER_URL + "/api/blockfrost", "xxxx"),
+//                 process.env.NEXT_PUBLIC_USE_MAINNET === 'true' ? 'Mainnet':'Preview'
+//         )
+//         if(walletApi !== undefined) {
+//             await lucid.selectWallet(walletApi)
+//         }
+//         console.log ("initializeLucid - OK - walletApi: " + toJson(walletApi))
+//         return lucid
+//     }catch (error){
+//         console.error("initializeLucid - Error: " + error)
+//         throw error
+//     }
+// }
+
 export const initializeLucid = async (walletApi?: WalletApi | undefined) => {
-    // console.log ("initializeLucid - init")
-    try {
-        const lucid = await Lucid.new(
-            // new Blockfrost(process.env.NEXT_PUBLIC_BLOCKFROST_URL!, process.env.NEXT_PUBLIC_BLOCKFROST_KEY!),
-            new Blockfrost(process.env.NEXT_PUBLIC_REACT_SERVER_URL + "/api/blockfrost", "xxxx"),
-                process.env.NEXT_PUBLIC_USE_MAINNET === 'true' ? 'Mainnet':'Preview'
-        )
-        if(walletApi !== undefined) {
-            await lucid.selectWallet(walletApi)
+    for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+            const lucid = await Lucid.new(
+                new Blockfrost(
+                    process.env.NEXT_PUBLIC_REACT_SERVER_URL + "/api/blockfrost",
+                    "xxxx"
+                ),
+                process.env.NEXT_PUBLIC_USE_MAINNET === 'true' ? 'Mainnet' : 'Preview'
+            );
+
+            if (walletApi !== undefined) {
+                await lucid.selectWallet(walletApi);
+            }
+
+            console.log("initializeLucid - OK - walletApi: " + toJson(walletApi));
+            return lucid;
+        } catch (error) {
+            console.error(`initializeLucid - Error on attempt ${attempt}: ${error}`);
+            if (attempt < 3) await new Promise(resolve => setTimeout(resolve, 1000));
         }
-        console.log ("initializeLucid - OK - walletApi: " + toJson(walletApi))
-        return lucid
-    }catch (error){
-        console.error("initializeLucid - Error: " + error)
-        throw error
     }
-}
+
+    throw new Error("initializeLucid - Error: Maximum retry attempts reached");
+};
 
 
 export const initializeLucidWithWalletFromPrivateKey = async (walletPrivateKey: string) => {

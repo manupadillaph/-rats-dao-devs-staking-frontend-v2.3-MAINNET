@@ -5,6 +5,7 @@ import { findDatumIfMissing, isNFT_With_AC_Lucid_InValue, isToken_With_AC_Lucid_
 import { objToPlutusData } from "../utils/cardano-utils";
 import { apiDeleteEUTxOsDBByStakingPool } from "./apis";
 import { isPoolDatum, isFundDatum, isUserDatum, isScriptDatum } from "./helpersDatumsAndRedeemers";
+import { toJson } from "../utils/utils";
 
 //---------------------------------------------------------------
 
@@ -176,6 +177,8 @@ export async function getMissingEUTxOsInDB(lucid: Lucid, utxos: UTxO[], eUTxOsDB
     //console.log ("getMissingEUTxOs - init - length script: " + utxos.length + " - db length: " + eUTxOsDB.length)
     for (var i = 0; i < utxos.length; i += 1) {
 
+        // console.log ("getMissingEUTxOsInDB - utxos txHash#outputIndex: " + toJson(utxos[i].txHash + " - " + utxos[i].outputIndex))
+
         if (!eUTxOsDB.find(eUTxO => eUTxO.uTxO.txHash === utxos[i].txHash && eUTxO.uTxO.outputIndex === utxos[i].outputIndex)) {
             const uTxO = await findDatumIfMissing(lucid, utxos[i])
             if (uTxO.datum) {
@@ -201,6 +204,7 @@ export async function getMissingEUTxOsInDB(lucid: Lucid, utxos: UTxO[], eUTxOsDB
                     continue;
                 }
                 catch (error) {
+                    // console.log ("getMissingEUTxOs - error: " + error)
                 }
                 try {
                     const fundDatum: FundDatum | void = mkFundDatum_FromCbor(uTxO.datum)

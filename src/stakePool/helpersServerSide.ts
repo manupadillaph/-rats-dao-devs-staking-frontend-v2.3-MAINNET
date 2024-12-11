@@ -540,7 +540,7 @@ export async function serverSide_updateStakingPool (poolInfo: StakingPoolDBInter
             swUpdate = true
         }
 
-        if (swUpdate) {
+        if (swUpdate ) {
             console.log("ServerSide - Update StakingPool - " + poolInfo.name + " - Saving StakingPool in DB")
             var StakingPoolDBModel = getStakingPoolDBModel()
             const filter = {name : poolInfo.name};
